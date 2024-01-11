@@ -1,4 +1,6 @@
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
+using TodoApi.Data;
 using TodoApi.Interfaces;
 using TodoApi.Models;
 using TodoApi.Services;
@@ -9,8 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<TodoContext>(opt =>
-    opt.UseInMemoryDatabase("TodoList"));
+builder.Services.AddDbContext<TodoItemDBContext>(options =>
+                    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresDefaultConnection")));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

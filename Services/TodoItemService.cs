@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TodoApi.Data;
 using TodoApi.Interfaces;
 using TodoApi.Models;
 
@@ -10,9 +11,9 @@ namespace TodoApi.Services{
     public class TodoItemService : ITodoItemService
     {
 
-        private readonly TodoContext _context;
+        private readonly TodoItemDBContext _context;
 
-        public TodoItemService(TodoContext context){
+        public TodoItemService(TodoItemDBContext context){
             _context = context;
         }
 
