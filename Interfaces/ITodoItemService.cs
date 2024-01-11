@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using TodoApi.Models;
 
 namespace TodoApi.Interfaces {
