@@ -8,6 +8,6 @@ namespace TodoApi.Interfaces {
         Task<TodoItemDTO?> GetTodoItem(long id);
         Task PutTodoItem(long id, TodoItemDTO todoDTO);
         Task<TodoItemDTO> PostTodoItem(TodoItemDTO todoDTO);
-        Task DeleteTodoItem(long id);
+        Task<bool> DeleteTodoItem(long id);
     }
 }

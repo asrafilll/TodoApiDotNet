@@ -64,17 +64,20 @@ namespace TodoApi.Services{
             
         }
 
-        public async Task DeleteTodoItem(long id)
+        public async Task<bool> DeleteTodoItem(long id)
         {
             var todoItem = await _context.TodoItems.FindAsync(id);
             if (todoItem == null)
             {
-                throw new KeyNotFoundException($"Todo Item with ID {id} not found");
+                return false;
             }
 
             _context.TodoItems.Remove(todoItem);
             await _context.SaveChangesAsync();
-        }      
+            
+            return true; 
+        }
+
 
         private static TodoItemDTO ItemToDTO(TodoItem todoItem) => new TodoItemDTO
         {

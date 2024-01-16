@@ -64,15 +64,16 @@ namespace TodoApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(long id)
         {
-           try 
-           {
-                await _service.DeleteTodoItem(id);
-                return NoContent();
-           } catch (KeyNotFoundException ex)
-           {
-                return NotFound(ex.Message);
-           }
+            bool deletionResult = await _service.DeleteTodoItem(id);
+                
+            if (deletionResult)
+            {
+                return NoContent(); 
+            }
+            else
+            {
+                return NotFound(); 
+            }
         }
-
     }
 }
